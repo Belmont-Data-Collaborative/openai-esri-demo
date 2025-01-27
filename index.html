@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ArcGIS + OpenAI Demo</title>
+
+  <!-- ArcGIS CSS -->
+  <link
+    rel="stylesheet"
+    href="https://js.arcgis.com/4.26/@arcgis/core/assets/esri/themes/light/main.css"
+  />
+  
+  <!-- Our custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Chart.js (for optional charting) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- ArcGIS JS -->
+  <script src="https://js.arcgis.com/4.26/"></script>
+
+  <!-- Our custom JS -->
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- UI for user interaction -->
+  <div id="topPane">
+    <div>
+      <label for="userPrompt"><strong>Ask a question about local health data:</strong></label>
+      <br/>
+      <input type="text" id="userPrompt" placeholder="e.g., Which county has the highest population?" />
+      <button onclick="handlePrompt()">Submit</button>
+    </div>
+
+    <!-- Additional filtering options (sample) -->
+    <div id="extraQueriesDiv">
+      <div id="filterOptions">
+        <label for="minPop"><strong>Minimum population:</strong></label>
+        <input type="number" id="minPop" placeholder="e.g., 50,000" style="width:80px;" />
+        <button onclick="applyMinPopulationFilter()">Apply</button>
+        <button onclick="resetDefinitionExpression()">Reset Filter</button>
+      </div>
+    </div>
+
+    <!-- AI response container -->
+    <div id="responseContainer">AI response will appear here...</div>
+
+    <!-- Container for a quick Chart (optional) -->
+    <div id="chartContainer">
+      <canvas id="myChart" width="280" height="200"></canvas>
+    </div>
+  </div>
+
+  <!-- Map container -->
+  <div id="viewDiv"></div>
+</body>
+</html>
